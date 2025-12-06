@@ -1,0 +1,149 @@
+<!--
+Simple GitHub Pages Blog (single-file)
+How to use:
+1. Create a GitHub repository (e.g. your-username.github.io or any repo).
+2. Create a new file named `index.html` and paste the contents of this file into it.
+3. Commit to the main branch.
+4. In repo Settings → Pages, choose branch: main and folder: / (root). Save.
+5. Visit https://YOUR-USERNAME.github.io/REPO-NAME
+
+This file contains inline CSS and JS so it's ready to drop into GitHub Pages.
+Feel free to edit the HTML to add posts (see the <main> .posts section) or
+replace posts by generating them from markdown when you switch to a static site generator.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My GitHub Pages Blog</title>
+  <meta name="description" content="A simple, modern blog template for GitHub Pages">
+
+  <style>
+    /* ===== Simple, clean blog styles ===== */
+    :root{--bg:#0f1720;--card:#0b1220;--muted:#9aa4b2;--accent:#6ee7b7;--text:#e6eef6}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:var(--text);background:linear-gradient(180deg,#071422 0%, #071722 100%);}
+    .wrap{max-width:900px;margin:32px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#2dd4bf,#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:0;color:var(--muted)}
+
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-size:14px}
+
+    .hero{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px;margin-bottom:20px}
+    .hero h2{margin:0 0 6px 0}
+    .hero p{margin:0;color:var(--muted)}
+
+    .controls{display:flex;gap:8px;margin:14px 0}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:var(--text);cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,#10b981,#06b6d4);border:none;color:#042022}
+
+    .content{display:grid;grid-template-columns:1fr 300px;gap:20px}
+    main{min-height:300px}
+    .posts{display:flex;flex-direction:column;gap:12px}
+    article{background:var(--card);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    article h3{margin:0 0 6px 0}
+    article p.meta{margin:0;color:var(--muted);font-size:13px}
+    article p.excerpt{margin-top:8px;color:var(--muted);line-height:1.5}
+
+    aside{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px}
+    .about{font-size:14px;color:var(--muted)}
+
+    footer{margin-top:30px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* responsive */
+    @media (max-width:900px){.content{grid-template-columns:1fr}aside{order:2}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">B</div>
+        <div>
+          <h1>My GitHub Blog</h1>
+          <p class="lead">Simple blog powered by GitHub Pages — edit index.html to update content.</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h2>Welcome 👋</h2>
+      <p>Fast, lightweight blog template you can host on GitHub Pages. Edit the posts below or replace with your own HTML pages.</p>
+    </section>
+
+    <div class="controls">
+      <button class="btn" id="new-post">+ New Post (local demo)</button>
+      <button class="btn primary" id="download">Download HTML</button>
+    </div>
+
+    <div class="content">
+      <main>
+        <div class="posts" id="posts">
+          <!-- Sample posts - edit these directly to add your content -->
+
+          <article>
+            <h3>How I started learning web — 2025-01-05</h3>
+            <p class="meta">by You • 3 min read</p>
+            <p class="excerpt">This is a simple demo post. Replace this block in index.html with your own posts or create a static site generator workflow when you want more features.</p>
+          </article>
+
+          <article>
+            <h3>Making a blog with GitHub Pages</h3>
+            <p class="meta">by You • 2 min read</p>
+            <p class="excerpt">Create an `index.html`, enable Pages in repository settings, and your site will be online at github.io. This file contains everything in a single file for easy upload from mobile.</p>
+          </article>
+
+        </div>
+      </main>
+
+      <aside>
+        <div class="about">
+          <h4>About me</h4>
+          <p>Short bio — add links, social icons or any widgets here.</p>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="about">
+          <h4>Tags</h4>
+          <p style="color:var(--muted)">#web #github #pages</p>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      Built with a single HTML file — edit `index.html` in your GitHub repo to change content.
+    </footer>
+  </div>
+
+  <script>
+    // Small demo: add a new post to the page (does NOT save to GitHub). Use the "Download HTML" to get a fresh copy.
+    document.getElementById('new-post').addEventListener('click', function(){
+      const posts = document.getElementById('posts');
+      const n = posts.children.length + 1;
+      const art = document.createElement('article');
+      art.innerHTML = `<h3>New Post ${n} — ${new Date().toLocaleDateString()}</h3><p class="meta">by You • 1 min read</p><p class="excerpt">This post was added in your browser for preview. To make it permanent, edit index.html in your repository and paste the post HTML here.</p>`;
+      posts.insertBefore(art, posts.firstChild);
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+
+    // Download current HTML (so you can save locally and upload)
+    document.getElementById('download').addEventListener('click', function(){
+      const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'index.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
